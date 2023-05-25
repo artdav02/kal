@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kalGovna</title>
+    <link rel="stylesheet" href="kal.css">
+</head>
+<body>
+    <div class="headerPart" id="home">
+        <div class="navbar">
+            <a class="logo" href="https://dickatyourdoor.com/products/blank-box-minimalist-dick-in-a-box">
+                Hokage
+            </a>
+            <div class="links">
+                <div class="singleLink" data-target="home">
+                    Home
+                </div>
+                <div class="singleLink" data-target="albums">
+                    Albums
+                </div>
+                <div class="singleLink" data-target="apply">
+                    Apply
+                </div>
+            </div>
+            <div class="socialNetworks">
+                <a class="singleSocial" href="https://www.facebook.com/profile.php?id=100011557538368" target="_blank">
+                    <img src="./icons8-facebook-50.png" alt="" class="socialIcon">
+                </a>
+                <a class="singleSocial" href="https://instagram.com/_9hokage__?igshid=NTc4MTIwNjQ2YQ==" target="_blank">
+                    <img src="./icons8-instagram-50.png" alt="" class="socialIcon">
+                </a>
+                <a class="singleSocial">
+                    <img src="./icons8-twitter-50.png" alt="" class="socialIcon">
+                </a>
+            </div>
+        </div>
+        <div class="centredPart">
+            <div class="street">
+                Street
+            </div>
+            <div class="photoshoot">
+                Photoshoot
+            </div>
+            <div class="description">
+                Tallinn studio and outdoor commercial photoshoots by professional photographer Hokage
+            </div>
+            <div class="seeMoreButton" data-target="more">
+                READ MORE
+            </div>
+        </div>
+    </div>
+    <div class="mainContent" id="more">
+        <div class="aboutMe">
+                <div class="informationAboutMyself">
+                    I'm a experienced photographer based in Tallinn, Estonia. With a passion for capturing captivating moments, I've been fortunate to freeze time and tell stories through my lens. From the historic streets of Tallinn to the picturesque countryside, I specialize in landscapes and candid portraits that evoke emotions and authenticity. I prioritize building connections with clients, ensuring a comfortable atmosphere and exceeding expectations. Photography is not just a profession, it's a way of life. Let's collaborate and create cherished memories together.
+                </div>
+                <img src="./1543483387-reinhart-julian-1145947-unsplash.jpg" alt="" class="rightSideImage">
+        </div>
+        <div class="aboutMe">
+            <img src="./Photographer-4.jpg" alt="" class="rightSideImage">
+            <div class="informationAboutMyself">
+                If you're in Tallinn or its surrounding areas and you're seeking a photographer who combines technical expertise with a passion for storytelling, I would be honored to collaborate with you. Let's embark on a photographic journey together, immortalizing moments and creating cherished memories that will last a lifetime.
+            </div>
+        </div>
+    </div>
+    <div class="imageCarousel" id="albums">
+        Album with some images!
+    </div>
+    <div id="carousel">
+        <button id="prev"><img src="./icons8-double-left-50.png" alt=""></button>
+        <div id="images"></div>
+        <button id="next"><img src="./icons8-double-right-50.png" alt=""></button>
+    </div>
+    <div class="applyForPhotoshoot" id="apply">
+        <div class="salutation">If you are interested, you can apply for a photoshoot!</div>
+        <div class="form">
+            <form>
+                <div class="singleInput">
+                    <div class="labelForInput">First Name:</div>
+                    <input type="text" class="inputForm">
+                </div>
+                <div class="singleInput">
+                    <div class="labelForInput">Last Name:</div>
+                    <input type="text" class="inputForm">
+                </div>
+                <div class="singleInput">
+                    <div class="labelForInput">Email:</div>
+                    <input type="email" class="inputForm">
+                </div>
+                <div class="singleInput">
+                    <div class="labelForInput">Phone Number:</div>
+                    <input type="tel" class="inputForm">
+                </div>
+                <div class="singleInput">
+                    <div class="labelForInput">Comment for shoot!:</div>
+                    <textarea class="comment"></textarea>
+                </div>
+            </form>
+            <div class="submit">
+                <button type="submit" class="submitButton">Submit</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <a href="mailto:hokage@gmail.com" class="email">
+            hokage@gmail.com
+        </a>
+        <a href="tel:+372123123123" class="telephone">
+            +372 123123123
+        </a>
+    </div>
+</body>
+<script>
+    let images = [
+        'img1.jpg',
+        'img2.jpg',
+        'img3.jpg',
+        'img4.jpg',
+        'img5.jpg',
+    ];
+
+    let currentImageIndex = 0;
+    let carousel = document.querySelector('#carousel');
+    let imagesDiv = document.querySelector('#images');
+
+    images.forEach(src => {
+        let img = document.createElement('img');
+        img.src = src;
+        img.className = 'reflection';
+        imagesDiv.appendChild(img);
+    });
+
+    function showImage(index) {
+        let imgs = imagesDiv.querySelectorAll('img');
+        imgs.forEach((img, i) => {
+            img.style.display = i === index ? 'block' : 'none';
+        });
+    }
+
+    function prevImage() {
+        currentImageIndex = (currentImageIndex + images.length - 1) % images.length;
+        showImage(currentImageIndex);
+    }
+
+    function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        showImage(currentImageIndex);
+    }
+
+    document.querySelector('#prev').addEventListener('click', prevImage);
+    document.querySelector('#next').addEventListener('click', nextImage);
+
+    setInterval(nextImage, 3000);
+
+    document.querySelectorAll('.singleLink').forEach(link => {
+        link.addEventListener('click', () => {
+            const targetId = link.getAttribute('data-target');
+            const target = document.getElementById(targetId);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    document.querySelectorAll('.seeMoreButton').forEach(link => {
+        link.addEventListener('click', () => {
+            const targetId = link.getAttribute('data-target');
+            const target = document.getElementById(targetId);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+</script>
+</html>
